@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .sideBarItems {
+    @apply flex items-center gap-2
+  }
+  .sideBar {
+    @apply space-y-3 child-hover:bg-gray-400 child:py-2 child:ps-2 child:transition-all child:duration-300 child:rounded-md
+  }
+  .headerBtn {
+    @apply bg-gray-500 text-white rounded-lg py-1.5 px-2 
+  }
+}
