@@ -1,18 +1,19 @@
 import React from "react";
 import "./App.css";
 import Sidebar from "./components/Module/Sidebar/Sidebar";
-import { Route, Routes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import Header from "./components/Module/Header/Header";
+import routes from "./routes/routes";
 
 function App() {
+  const router = useRoutes(routes);
+
   return (
     <div className="flex">
       <Sidebar />
-      <div className="flex-[4]">
+      <div className="flex-[4] p-3">
         <Header />
-        {/* <Routes>
-        <Route />
-      </Routes> */}
+        {router}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import ModeNightOutlinedIcon from "@mui/icons-material/ModeNightOutlined";
 
 export default function Header() {
   return (
-    <div className="flex items-center justify-between p-4">
+    <div className="flex items-center justify-between mb-16">
       <div className="flex items-center gap-2">
         <img
           className="w-14 h-14 object-cover rounded-full border border-black"
