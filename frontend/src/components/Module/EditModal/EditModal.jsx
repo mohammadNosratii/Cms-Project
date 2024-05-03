@@ -1,19 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-export default function EditModal({ children, editModal, triggerEditModal }) {
-
-  useEffect(() => {
-    const closeEditModal = (event) => {
-      if (event.key === "Escape") {
-        triggerEditModal(false);
-      }
-    };
-    if (editModal) {
-      window.addEventListener("keydown", closeEditModal);
-    } else {
-      window.removeEventListener("keydown", closeEditModal);
-    }
-  }, [editModal]);
+export default function EditModal({
+  children,
+  editModal,
+  triggerEditModal,
+}) {
 
   return (
     <>
@@ -22,9 +13,12 @@ export default function EditModal({ children, editModal, triggerEditModal }) {
           <div className="bg-white p-4 rounded-md space-y-5 flex flex-col justify-center items-center">
             <h3 className="text-2xl">اطلاعات جدید را وارد کنید</h3>
             {children}
-            <button className="bg-gray-500 text-white py-2 px-4 rounded-md">
-              ثبت اطلاعات جدید
-            </button>
+              <button
+                className="bg-gray-500 text-white py-2 px-4 rounded-md"
+                onClick={() => triggerEditModal(false)}
+              >
+                Close
+              </button>
           </div>
         </div>
       )}

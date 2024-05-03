@@ -1,17 +1,19 @@
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import useProductMutation from "../../../hooks/useDeleteProducts/useProductMutation";
+import { useDelProductMutation } from "../../../hooks/useProducts/useProducts";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function DeleteModal({
   deleteModal,
   triggerDelModal,
   productIdForDelete,
 }) {
-  const deleteProduct = useProductMutation();
+  const deleteProduct = useDelProductMutation();
 
   const deleteModalHandler = () => {
     deleteProduct.mutate(productIdForDelete);
     triggerDelModal(false);
+    
   };
 
   const CloseModalHandler = () => {

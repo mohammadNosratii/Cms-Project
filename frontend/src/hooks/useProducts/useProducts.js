@@ -1,11 +1,27 @@
 import { useQuery } from "react-query";
-import axios from "axios";
+import { productGetApi, productDelApi } from "../../api/productApi";
+import { useMutation, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 
 export default function UseProducts() {
-  return useQuery("Products", async () => {
-    const response = await axios.get("http://localhost:3000/api/products/");
-    if (response.status === 200) {
-      return response.data;
-    }
+  return useQuery({
+    queryKey: ["Products"],
+    queryFn: productGetApi,
+  });
+}
+
+export function useDelProductMutation() {
+  
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (productIdForDelete) => productDelApi(productIdForDelete),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["Products"]);
+      toast("محصول با موفقیت حذف شد");
+    },
+    onError: (error) => {
+      console.error("Error deleting product:", error);
+    },
   });
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-export default function DetailsModal({ detailsModal, triggerDetailsModal }) {
+export default function DetailsModal({ detailsModal, triggerDetailsModal, mainProductInfo }) {
   useEffect(() => {
     const closeDetailModal = (event) => {
       if (event.key === "Escape") {
@@ -22,16 +22,16 @@ export default function DetailsModal({ detailsModal, triggerDetailsModal }) {
             <table className="w-full">
               <thead>
                 <tr className="child:text-xl">
-                  <th>اسم</th>
-                  <th>قیمت</th>
                   <th>محبوبیت</th>
+                  <th>میزان فروش</th>
+                  <th>رنگ بندی</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="child:text-center child:text-sm">
-                  <td>شارژر</td>
-                  <td>90000تومن</td>
-                  <td>90%</td>
+                  <td>{mainProductInfo.popularity}%</td>
+                  <td>{mainProductInfo.sale.toLocaleString()} تومن</td>
+                  <td>{mainProductInfo.colors}</td>
                 </tr>
               </tbody>
             </table>
