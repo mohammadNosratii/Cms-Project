@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
-import { productGetApi, productDelApi } from "../../api/productApi";
+import { productGetApi, productDelApi, productUpdateApi, productPostApi,
+} from "../../api/productApi";
 import { useMutation, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 
@@ -11,7 +12,6 @@ export default function UseProducts() {
 }
 
 export function useDelProductMutation() {
-  
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -22,6 +22,36 @@ export function useDelProductMutation() {
     },
     onError: (error) => {
       console.error("Error deleting product:", error);
+    },
+  });
+}
+
+export function usePutMutation() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (payload) => productUpdateApi(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["Products"]);
+      toast("اطلاعات محصول با موفقیت آپدیت شد");
+    },
+    onError: (error) => {
+      console.error("Error Putting product:", error);
+    },
+  });
+}
+
+export function usePostMutation() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (payload) => productPostApi(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["Products"]);
+      console.log("Success");
+    },
+    onError: (error) => {
+      console.error("Error Posting product:", error);
     },
   });
 }

@@ -10,7 +10,13 @@ import { Flip, ToastContainer } from "react-toastify";
 function App() {
   const router = useRoutes(routes);
 
-  const client = new QueryClient();
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      }
+    }
+  });
 
   return (
     <div className="flex font-sans">

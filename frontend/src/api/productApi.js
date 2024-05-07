@@ -15,3 +15,22 @@ export async function productDelApi(productIdForDelete) {
     return response.data;
   }
 }
+
+export async function productUpdateApi(payload) {
+  const response = await axios.put(
+    `http://localhost:3000/api/products/${payload.productId}`,
+    payload.data
+  );
+  if (response.status === 200) {
+    console.log(response);
+    return response.data;
+  }
+}
+
+export function productPostApi(payload) {
+  return axios.post(`http://localhost:3000/api/products/`, payload, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
