@@ -19,12 +19,12 @@ export default function CommentsBox({
   };
 
   const commentIdHandler = () => {
-    onCommentId(id);
+    onCommentId();
     triggerCommentDelModal(true);
   };
   const changeCommentHandler = () => {
     onCommentText(body);
-    onCommentId(id);
+    onCommentId();
     triggerCommentEditModal(true);
   };
 

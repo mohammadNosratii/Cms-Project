@@ -98,8 +98,7 @@ export default function AllComments() {
       {commentDelModal && (
         <DeleteModal
           title="آیا از حذف کامنت اطمینان دارید؟"
-          confirmBtn="حذف"
-          productID={commentId.current}
+          Id={commentId.current}
           triggerDelModal={triggerCommentDelModal}
           action={deleteComment.mutate}
         />

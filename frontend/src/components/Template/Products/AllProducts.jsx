@@ -10,6 +10,7 @@ import DeleteModal from "../../Module/DeleteModal/DeleteModal";
 import DetailsModal from "../../Template/DetailsModal/DetailsModal";
 import EditModal from "../../Module/EditModal/EditModal";
 import { usePutMutation } from "../../../hooks/useProducts/useProducts";
+import ProductDetailsContent from "../DetailsModal/content/ProductDetailsContent";
 
 export default function AllProducts() {
   // All Products
@@ -100,7 +101,7 @@ export default function AllProducts() {
             </tr>
           </thead>
           <tbody>
-            {products.reverse().map((product) => (
+            {products.map((product) => (
               <ProductsBox
                 onDelete={() => handleDeleteProduct(product.id)}
                 onDetail={() => detailProductHandler(product)}
@@ -122,19 +123,22 @@ export default function AllProducts() {
       {deleteModal && (
         <DeleteModal
           title="آیا از حذف محصول اطمینان دارید؟"
-          confirmBtn="حذف"
           deleteModal={deleteModal}
           triggerDelModal={triggerDelModal}
-          productID={productID.current}
+          Id={productID.current}
           action={deleteProduct.mutate}
         />
       )}
 
       <DetailsModal
-        mainProductInfo={mainProductInfo.current}
         detailsModal={detailsModal}
         triggerDetailsModal={triggerDetailsModal}
-      />
+      >
+        <ProductDetailsContent
+          mainProductInfo={mainProductInfo.current}
+          triggerDetailsModal={triggerDetailsModal}
+        />
+      </DetailsModal>
       {editModal && (
         <EditModal triggerEditModal={triggerEditModal}>
           {/* Form Validation and Submitation */}

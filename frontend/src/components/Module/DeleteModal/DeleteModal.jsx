@@ -4,13 +4,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function DeleteModal({
   title,
-  confirmBtn,
   triggerDelModal,
-  productID,
+  Id,
   action,
 }) {
   const confirmModalHandler = () => {
-    action(productID);
+    action(Id);
     triggerDelModal(false);
   };
 
@@ -32,13 +31,8 @@ export default function DeleteModal({
         <p className="text-lg">{title}</p>
         <hr />
         <div className="flex justify-end gap-5 child:text-white child:w-20 child:py-2 child:rounded-md">
-          <button
-            className={`${
-              confirmBtn === "حذف" ? "bg-red-600" : "bg-green-600"
-            }`}
-            onClick={confirmModalHandler}
-          >
-            {confirmBtn}
+          <button className="bg-red-600" onClick={confirmModalHandler}>
+            حذف
           </button>
           <button className="bg-gray-500" onClick={CloseModalHandler}>
             بستن

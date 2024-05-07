@@ -36,7 +36,7 @@ export default function ProductsBox({
       <td className="text-center">{price.toLocaleString()} تومان</td>
       <td className="text-center">{count}</td>
       <td className="text-white ">
-        <div className="child:bg-gray-500 child:w-20 child:py-2 child:rounded-md flex justify-center items-center gap-5">
+        <div className="changesBtn">
           <button onClick={detailProductHandler}>جزئیات</button>
           <button onClick={deletProductHandler}>حذف</button>
           <button onClick={editProductInfoHandler}>ویرایش</button>

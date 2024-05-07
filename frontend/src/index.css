@@ -24,4 +24,7 @@
   .editErrorMessage {
     @apply text-red-600 max-w-52
   }
+  .changesBtn {
+    @apply child:bg-gray-500 child:w-20 child:py-2 child:rounded-md flex justify-center items-center gap-5
+  }
 }
